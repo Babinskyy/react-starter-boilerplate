@@ -8,6 +8,7 @@ import { User } from 'app/user/User';
 import { UsersList } from 'app/usersList/UsersList';
 
 import { AppRoute } from './AppRoute.enum';
+import Products from 'app/products/products';
 
 export const AppRoutes = () => (
   <Routes>
@@ -17,6 +18,7 @@ export const AppRoutes = () => (
       <Route path={AppRoute.help} element={<Help />} />
       <Route path={AppRoute.user} element={<User />} />
       <Route path={AppRoute.users} element={<UsersList />} />
+      <Route path={AppRoute.products} element={<Products />} />
       <Route path="*" element={<Home />} />
     </Route>
   </Routes>

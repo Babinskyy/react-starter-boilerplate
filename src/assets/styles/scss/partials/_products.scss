@@ -1,0 +1,6 @@
+.products {
+  @include flexbox(row, space-evenly, center);
+  flex-wrap: wrap;
+  background-color: #f8f8fa;
+  flex-grow: 1;
+}

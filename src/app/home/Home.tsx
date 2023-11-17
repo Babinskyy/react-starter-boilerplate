@@ -28,7 +28,6 @@ export const Home = () => {
     <>
       <h2>Home</h2>
       <p>
-        <Translation id="home.helloWorld" />
         <span style={{ margin: '0 1rem' }}>&#x2190;</span>
         <span>
           This text is translated using <strong>Translation</strong> component.
