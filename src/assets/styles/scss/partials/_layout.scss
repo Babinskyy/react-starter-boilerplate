@@ -1,9 +1,9 @@
 .app {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(column);
   min-height: 100vh;
+  background-color: #f8f8fa;
   .app__main {
-    display: flex;
+    @include flexbox(column);
     flex-grow: 1;
   }
 }

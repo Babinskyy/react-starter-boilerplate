@@ -4,28 +4,109 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Rating } from '@mui/material';
+import DetailsModal from './DetailsModal';
 
-export default function Product() {
+export type TProduct = {
+  active: true;
+  name: string;
+  description: string;
+  id: string;
+  image: string;
+  promo: boolean;
+  rating: number;
+};
+
+const Product = ({ name, description, image, promo, rating, active }: TProduct) => {
   return (
-    <Card sx={{ maxWidth: 288, height: 400 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="https://scx2.b-cdn.net/gfx/news/hires/2021/gecko.jpg"
-        title="green iguana"
-      />
+    <Card
+      sx={{
+        maxWidth: 288,
+        height: 400,
+        boxShadow: 'none',
+        mt: 4,
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+      }}
+    >
+      {promo && ( // Conditionally render promo label
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'absolute',
+            top: '16px',
+            fontSize: '14px',
+            backgroundColor: '#F9A52B',
+            color: 'white',
+            width: '75px',
+            height: '24px',
+          }}
+        >
+          Promo
+        </div>
+      )}
+      <CardMedia sx={{ minHeight: 170 }} image={image} title="Product Image" />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        <Typography gutterBottom component="div" sx={{ fontSize: '18px' }}>
+          {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents
-          except Antarctica
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            fontSize: '14px',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            WebkitLineClamp: 3,
+            maxHeight: '60px',
+          }}
+        >
+          {description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+
+      <CardActions
+        sx={{
+          mt: 'auto',
+          mx: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          paddingX: '16px',
+          width: '256px',
+          // border: '1px solid black',
+        }}
+      >
+        <Rating
+          name="read-only"
+          value={rating}
+          readOnly
+          sx={{ mb: 1, '& .MuiRating-icon': { margin: '0 2.21px' } }}
+          size="small"
+        />
+        {/* <Button
+          variant="contained"
+          sx={{
+            mx: 'auto',
+            width: '100%',
+            mb: 1,
+            background: '#4460F7',
+            textTransform: 'lowercase',
+            '&:hover': {
+              backgroundColor: ' #2140E8',
+            },
+          }}
+        >
+          <span style={{ textTransform: 'uppercase' }}>S</span>how details
+        </Button> */}
+        <DetailsModal image={image} description={description} name={name} active={active} />
       </CardActions>
     </Card>
   );
-}
+};
+
+export default Product;

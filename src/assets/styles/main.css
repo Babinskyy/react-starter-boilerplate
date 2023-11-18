@@ -1,10 +1,16 @@
 .app {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: normal;
   min-height: 100vh;
+  background-color: #f8f8fa;
 }
 .app .app__main {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: normal;
   flex-grow: 1;
 }
 
@@ -13,40 +19,72 @@
   justify-content: space-evenly;
   align-items: center;
   height: 144px;
+  background-color: #fff;
 }
-.header .search-container {
+.header .content-container {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1224px;
 }
-.header .login-button {
+.header .content-container .login-button {
   text-transform: lowercase;
 }
-.header .login-button span {
+.header .content-container .login-button span {
   text-transform: uppercase;
 }
 
 .searchbar {
   display: flex;
-  width: 680px;
+  width: 595px;
   justify-content: space-between;
+  align-items: center;
+}
+.searchbar .css-i4bv87-MuiSvgIcon-root {
+  fill: #1a1b1d;
 }
 
-.products {
+.products-page {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
-  background-color: #f8f8fa;
+  width: 1224px;
+  margin: 0 auto;
   flex-grow: 1;
+}
+.products-page .products {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ant-checkbox-inner {
+  height: 24px !important;
+  width: 24px !important;
+}
+
+.pagination-container button {
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  font-weight: 600;
+  background-color: transparent;
+  font-size: 14px;
+}
+.pagination-container button:hover {
+  cursor: pointer;
+  color: #2140e8;
+}
+
+.ant-modal-content {
+  padding: 0 !important;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: "Nunito Sans", sans-serif;
 }/*# sourceMappingURL=main.css.map */

@@ -3,13 +3,18 @@
   justify-content: space-evenly;
   align-items: center;
   height: 144px;
-  .search-container {
+  background-color: #fff;
+  .content-container {
     display: flex;
-  }
-  .login-button {
-    text-transform: lowercase;
-    span {
-      text-transform: uppercase;
+    align-items: center;
+    justify-content: space-between;
+    width: 1224px;
+    .login-button {
+      text-transform: lowercase;
+
+      span {
+        text-transform: uppercase;
+      }
     }
   }
 }

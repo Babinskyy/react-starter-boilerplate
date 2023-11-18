@@ -1,6 +1,10 @@
-.products {
-  @include flexbox(row, space-evenly, center);
-  flex-wrap: wrap;
-  background-color: #f8f8fa;
+.products-page {
+  @include flexbox(column, space-evenly, center);
+  width: 1224px;
+  margin: 0 auto;
   flex-grow: 1;
+  .products {
+    @include flexbox(row, space-between, center);
+    flex-wrap: wrap;
+  }
 }

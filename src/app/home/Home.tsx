@@ -10,7 +10,7 @@ import { Translation } from 'ui/translation/Translation';
 import { LocationInfo } from 'ui/locationInfo/LocationInfo';
 
 export const Home = () => {
-  const { locale, setLocale } = useLocale();
+  // const { locale, setLocale } = useLocale();
   const { user, login, logout, isAuthenticated, isAuthenticating } = useAuth();
 
   const {
@@ -33,12 +33,12 @@ export const Home = () => {
           This text is translated using <strong>Translation</strong> component.
         </span>
         <span>Click </span>
-        <button
+        {/* <button
           style={{ fontSize: 'inherit' }}
           onClick={() => setLocale(locale === AppLocale.pl ? AppLocale.en : AppLocale.pl)}
         >
           here
-        </button>{' '}
+        </button>{' '} */}
         to change language.
       </p>
       <p>This is a starter project for TSH React application. Click on navigation links above to learn more.</p>

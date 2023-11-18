@@ -5,13 +5,16 @@ import { AuthContextController } from 'context/auth/authContextController/AuthCo
 import { ApiClientContextController } from '../context/apiClient/apiClientContextController/ApiClientContextController';
 
 import { AppProvidersProps } from './AppProviders.types';
+import { FilterProvider } from 'context/filterContext/FilterContext';
 
 export const AppProviders = ({ children }: AppProvidersProps) => (
-  <LocaleContextController>
-    <ApiClientContextController>
-      <AuthContextController>
-        <Router>{children}</Router>
-      </AuthContextController>
-    </ApiClientContextController>
-  </LocaleContextController>
+  <FilterProvider>
+    <LocaleContextController>
+      <ApiClientContextController>
+        <AuthContextController>
+          <Router>{children}</Router>
+        </AuthContextController>
+      </ApiClientContextController>
+    </LocaleContextController>
+  </FilterProvider>
 );

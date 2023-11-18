@@ -8,10 +8,9 @@ export default function SearchInput() {
     <Paper
       component="form"
       sx={{
-        p: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        width: 400,
+        width: 392,
         boxShadow: 'none',
         border: '1px solid #E0E2EA',
       }}
@@ -21,7 +20,13 @@ export default function SearchInput() {
           ml: 1,
           flex: 1,
           fontSize: '14px',
-          color: 'rgba(0, 0, 0, 1)',
+          fontStyle: 'normal',
+          input: {
+            color: '#1A1B1D',
+            '&::placeholder': {
+              opacity: 1,
+            },
+          },
         }}
         placeholder="Search"
         inputProps={{ 'aria-label': 'search' }}

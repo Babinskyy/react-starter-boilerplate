@@ -1,5 +1,9 @@
 .searchbar {
   display: flex;
-  width: 680px;
+  width: 595px;
   justify-content: space-between;
+  align-items: center;
+  .css-i4bv87-MuiSvgIcon-root {
+    fill: #1a1b1d;
+  }
 }

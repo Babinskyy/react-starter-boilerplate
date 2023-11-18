@@ -7,11 +7,20 @@ import Searchbar from './Searchbar';
 const Header = () => {
   return (
     <header className="header">
-      <Logo />
-      <Searchbar />
-      <Button variant="outlined" size="large" className="login-button">
-        <span>l</span>og in
-      </Button>
+      <div className="content-container">
+        <Logo />
+        <Searchbar />
+        <div />
+        <div />
+        <Button
+          variant="outlined"
+          size="large"
+          className="login-button"
+          sx={{ color: '#4460F7', borderColor: '#4460F7' }}
+        >
+          <span>l</span>og in
+        </Button>
+      </div>
     </header>
   );
 };
