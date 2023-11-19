@@ -24,7 +24,7 @@ const Product = ({ name, description, image, promo, rating, active }: TProduct) 
         maxWidth: 288,
         height: 400,
         boxShadow: 'none',
-        mt: 4,
+        mb: 4,
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
@@ -88,21 +88,7 @@ const Product = ({ name, description, image, promo, rating, active }: TProduct) 
           sx={{ mb: 1, '& .MuiRating-icon': { margin: '0 2.21px' } }}
           size="small"
         />
-        {/* <Button
-          variant="contained"
-          sx={{
-            mx: 'auto',
-            width: '100%',
-            mb: 1,
-            background: '#4460F7',
-            textTransform: 'lowercase',
-            '&:hover': {
-              backgroundColor: ' #2140E8',
-            },
-          }}
-        >
-          <span style={{ textTransform: 'uppercase' }}>S</span>how details
-        </Button> */}
+
         <DetailsModal image={image} description={description} name={name} active={active} />
       </CardActions>
     </Card>

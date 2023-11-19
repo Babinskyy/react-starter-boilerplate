@@ -1,4 +1,10 @@
-.ant-checkbox-inner {
-  height: 24px !important;
-  width: 24px !important;
+.filters-container {
+  display: flex;
+  align-items: center;
+  width: 179px;
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 15px;
+  }
 }

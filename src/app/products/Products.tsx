@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { TProduct } from './Product';
 import { useFilter } from 'context/filterContext/FilterContext';
+import NoProducts from './NoProducts';
 
 export type TProductsMeta = {
   currentPage: number;
@@ -24,11 +25,14 @@ const Products = () => {
   const getProducts = async (page: number) => {
     try {
       const response = await axios.get(
-        `http://jointshfrontendapi-env-3.eba-z7bd6rn6.eu-west-1.elasticbeanstalk.com/products?limit=${8}&page=${page}`,
+        `http://jointshfrontendapi-env-3.eba-z7bd6rn6.eu-west-1.elasticbeanstalk.com/products`,
         {
           params: {
+            limit: 8,
+            page: page,
             promo: filterOptions.promo || undefined,
             active: filterOptions.active || undefined,
+            search: filterOptions.searchInput || undefined,
           },
         },
       );
@@ -40,26 +44,27 @@ const Products = () => {
     }
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
   useEffect(() => {
     getProducts(currentPage);
   }, [currentPage]);
 
   useEffect(() => {
     getProducts(1);
+    setCurrentPage(1);
   }, [filterOptions]);
 
   return (
     <div className="products-page">
       <div className="products">
-        {products.map((product: TProduct) => {
-          return <Product key={product.id} {...product} />;
-        })}
+        {products.length ? (
+          products.map((product: TProduct) => {
+            return <Product key={product.id} {...product} />;
+          })
+        ) : (
+          <NoProducts />
+        )}
       </div>
-      <Pagination {...productsMeta} handlePageChange={handlePageChange} />
+      <Pagination {...productsMeta} setCurrentPage={setCurrentPage} currentPage={currentPage || 1} />
     </div>
   );
 };

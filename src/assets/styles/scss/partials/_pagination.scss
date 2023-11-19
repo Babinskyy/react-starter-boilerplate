@@ -1,13 +1,33 @@
 .pagination-container {
+  margin: auto auto 0 auto;
+  .pagination {
+    padding: 5px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    &.ellipsis {
+      pointer-events: none;
+    }
+    &:hover {
+      cursor: pointer;
+      color: #2140e8;
+    }
+  }
+
   button {
-    font-family: 'Nunito Sans', sans-serif;
     border: none;
+    font-family: Nunito, sans-serif;
+    font-size: 14px;
     font-weight: 600;
     background-color: transparent;
     font-size: 14px;
     &:hover {
       cursor: pointer;
       color: #2140e8;
+    }
+    &.disabled {
+      pointer-events: none;
     }
   }
 }

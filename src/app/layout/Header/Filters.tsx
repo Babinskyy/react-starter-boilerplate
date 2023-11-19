@@ -2,10 +2,10 @@ import { styled } from '@mui/material/styles';
 import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
 import { useFilter } from '../../../context/filterContext/FilterContext';
 
-interface FilterOptions {
+type FilterOptions = {
   active: boolean;
   promo: boolean;
-}
+};
 
 type FilterName = keyof FilterOptions;
 
@@ -13,6 +13,7 @@ const BpIcon = styled('span')(({ theme }) => ({
   borderRadius: 3,
   width: 24,
   height: 24,
+  padding: 0,
   boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
   '.Mui-focusVisible &': {
     outline: '2px auto rgba(19,124,189,.6)',
@@ -29,6 +30,7 @@ const BpCheckedIcon = styled(BpIcon)({
   backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
   '&:before': {
     display: 'block',
+    padding: 0,
     width: 24,
     height: 24,
     backgroundImage:
@@ -61,11 +63,11 @@ export default function CustomizedCheckbox() {
     updateFilterOptions({ [filterName]: !filterOptions[filterName] });
   };
   return (
-    <>
+    <div className="filters-container">
       <BpCheckbox onChange={() => handleCheckboxChange('active')} id="active" checked={filterOptions.active} />
       <label htmlFor="active">Active</label>
       <BpCheckbox onChange={() => handleCheckboxChange('promo')} id="promo" checked={filterOptions.promo} />
       <label htmlFor="promo">Promo</label>
-    </>
+    </div>
   );
 }

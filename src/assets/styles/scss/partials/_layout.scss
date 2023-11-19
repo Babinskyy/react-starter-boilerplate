@@ -4,6 +4,10 @@
   background-color: #f8f8fa;
   .app__main {
     @include flexbox(column);
+    padding: 56px;
     flex-grow: 1;
+  }
+  .app__main--no-header {
+    overflow: hidden;
   }
 }

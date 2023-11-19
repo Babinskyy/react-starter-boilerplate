@@ -9,6 +9,9 @@
     align-items: center;
     justify-content: space-between;
     width: 1224px;
+    .avatar {
+      border-radius: 50%;
+    }
     .login-button {
       text-transform: lowercase;
 

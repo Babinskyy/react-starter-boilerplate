@@ -1,10 +1,11 @@
 .products-page {
-  @include flexbox(column, space-evenly, center);
+  @include flexbox(column);
   width: 1224px;
   margin: 0 auto;
   flex-grow: 1;
+  // border: 5px solid red;
   .products {
-    @include flexbox(row, space-between, center);
+    @include flexbox(row, space-between);
     flex-wrap: wrap;
   }
 }

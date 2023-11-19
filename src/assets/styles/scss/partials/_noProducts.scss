@@ -1,0 +1,25 @@
+.no-products-container {
+  @include flexbox(column, center, center);
+  margin: 0 auto;
+  width: 600px;
+  height: 344px;
+  border-radius: 8px;
+  background-color: #fff;
+  svg {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    color: #1a1b1d;
+    font-size: 18px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    margin: 0;
+  }
+  h4 {
+    margin: 0;
+    color: #9194a5;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

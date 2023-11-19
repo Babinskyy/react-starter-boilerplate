@@ -7,7 +7,7 @@ interface FilterContextProps {
 interface FilterOptions {
   active: boolean;
   promo: boolean;
-  // Add more filter options as needed
+  searchInput: string;
 }
 
 interface FilterContextType {
@@ -19,6 +19,7 @@ const defaultValue: FilterContextType = {
   filterOptions: {
     active: false,
     promo: false,
+    searchInput: '',
   },
   updateFilterOptions: () => {},
 };

@@ -1,8 +1,14 @@
 @import './scss/utilities/mixins', './scss/partials/layout', './scss/partials/header', './scss/partials/searchbar',
-  './scss/partials/products', './scss/partials/filters', './scss/partials/pagination', './scss/partials/DetailsModal';
+  './scss/partials/products', './scss/partials/filters', './scss/partials/pagination', './scss/partials/detailsModal',
+  './scss/partials/login', './scss/partials/noProducts';
+
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  // overflow: hidden;
 }
