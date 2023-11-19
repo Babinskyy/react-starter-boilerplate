@@ -2,13 +2,16 @@ import '../../assets/styles/main.scss';
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { Card } from 'antd';
+import Loader from '../../ui/loader/Loader';
 
 const { Meta } = Card;
 
 const DetailsModal = (props: any) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const showModal = () => {
+    setLoading(true);
     setIsModalOpen(true);
   };
 
@@ -33,7 +36,22 @@ const DetailsModal = (props: any) => {
         {props.active ? 'Show details' : 'Unavailable'}
       </Button>
       <Modal open={isModalOpen} onCancel={handleCancel} footer={null}>
-        <Card hoverable cover={<img alt="example" src={props.image} />}>
+        <Card
+          hoverable
+          cover={
+            <>
+              <div style={{ height: '450px', display: loading ? 'block' : 'none' }}>
+                <Loader />
+              </div>
+              <img
+                alt="example"
+                src={props.image}
+                onLoad={() => setLoading(false)}
+                style={{ display: loading ? 'none' : 'block' }}
+              />
+            </>
+          }
+        >
           <Meta title={props.name} description={props.description} />
         </Card>
       </Modal>

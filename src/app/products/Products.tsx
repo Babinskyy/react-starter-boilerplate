@@ -1,6 +1,6 @@
 import Product from './Product';
 import Pagination from './Pagination';
-
+import Loader from '../../ui/loader/Loader';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { TProduct } from './Product';
@@ -19,11 +19,13 @@ const Products = () => {
   const [products, setProducts] = useState<TProduct[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [productsMeta, setProductsMeta] = useState<TProductsMeta>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { filterOptions } = useFilter();
 
   const getProducts = async (page: number) => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `http://jointshfrontendapi-env-3.eba-z7bd6rn6.eu-west-1.elasticbeanstalk.com/products`,
         {
@@ -42,6 +44,7 @@ const Products = () => {
     } catch (error) {
       console.error(error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -56,7 +59,9 @@ const Products = () => {
   return (
     <div className="products-page">
       <div className="products">
-        {products.length ? (
+        {loading ? (
+          <Loader />
+        ) : products.length ? (
           products.map((product: TProduct) => {
             return <Product key={product.id} {...product} />;
           })
@@ -64,7 +69,7 @@ const Products = () => {
           <NoProducts />
         )}
       </div>
-      <Pagination {...productsMeta} setCurrentPage={setCurrentPage} currentPage={currentPage || 1} />
+      {!loading && <Pagination {...productsMeta} setCurrentPage={setCurrentPage} currentPage={currentPage || 1} />}
     </div>
   );
 };

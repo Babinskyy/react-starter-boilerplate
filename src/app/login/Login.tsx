@@ -1,13 +1,15 @@
 import { Form, Input, Button } from 'antd';
-import '../../assets/styles/main.scss'; // Import your CSS file
+import '../../assets/styles/main.scss';
+import loginImageLowQuality from '../../assets/images/loginImageLowQuality.jpg';
 import loginImage from '../../assets/images/loginImage.jpg';
-import Logo from '../common/Logo'; // Replace with your logo path
+import Logo from '../common/Logo';
 import { useNavigate } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Login = () => {
   const navigate = useNavigate();
   const onFinish = (values: any) => {
-    console.log('Received values:', values);
     localStorage.setItem('user', values.username);
     navigate('/products');
   };
@@ -15,7 +17,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="image-section">
-        <img src={loginImage} alt="login-image" />
+        <LazyLoadImage placeholderSrc={loginImageLowQuality} src={loginImage} alt="login-image" effect="blur" />
       </div>
       <div className="right-section">
         {' '}

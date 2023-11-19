@@ -2,8 +2,8 @@
   @include flexbox(column);
   width: 1224px;
   margin: 0 auto;
-  flex-grow: 1;
   // border: 5px solid red;
+  flex-grow: 1;
   .products {
     @include flexbox(row, space-between);
     flex-wrap: wrap;
