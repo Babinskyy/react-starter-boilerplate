@@ -40,7 +40,12 @@ const Product = ({ name, description, image, promo, rating, active }: TProduct) 
         />
       </CardMedia>
       <CardContent>
-        <Typography gutterBottom component="div" sx={{ fontSize: '18px' }}>
+        <Typography
+          gutterBottom
+          component="div"
+          sx={{ fontSize: '18px', WebkitBoxOrient: 'vertical', WebkitLineClamp: 1 }}
+          className="product-title"
+        >
           {name}
         </Typography>
         <Typography

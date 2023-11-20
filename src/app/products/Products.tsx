@@ -1,11 +1,11 @@
 import Product from './Product';
 import Pagination from './Pagination';
 import Loader from '../../ui/loader/Loader';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { TProduct } from './Product';
 import { useFilter } from 'context/filterContext/FilterContext';
 import NoProducts from './NoProducts';
+import { useQuery } from 'hooks';
 
 export type TProductsMeta = {
   currentPage: number;
@@ -16,60 +16,57 @@ export type TProductsMeta = {
 };
 
 const Products = () => {
-  const [products, setProducts] = useState<TProduct[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [productsMeta, setProductsMeta] = useState<TProductsMeta>();
-  const [loading, setLoading] = useState<boolean>(false);
+  const [products, setProducts] = useState<TProduct[]>([]);
+  const [productsMeta, setProductsMeta] = useState<TProductsMeta | undefined>(undefined);
 
   const { filterOptions } = useFilter();
 
-  const getProducts = async (page: number) => {
-    try {
-      setLoading(true);
-      const response = await axios.get(
-        `http://jointshfrontendapi-env-3.eba-z7bd6rn6.eu-west-1.elasticbeanstalk.com/products`,
-        {
-          params: {
-            limit: 8,
-            page: page,
-            promo: filterOptions.promo || undefined,
-            active: filterOptions.active || undefined,
-            search: filterOptions.searchInput || undefined,
-          },
-        },
-      );
+  const { data: productsResponse, isLoading: areProductsLoading } = useQuery(
+    'getProducts',
+    {
+      limit: window.innerWidth < 768 ? 4 : 8,
+      page: currentPage,
+      promo: filterOptions.promo || undefined,
+      active: filterOptions.active || undefined,
+      search: filterOptions.searchInput || undefined,
+    },
+    {
+      select: (data) => {
+        return { ...data };
+      },
+    },
+  );
 
-      setProductsMeta(response.data.meta);
-      setProducts(response.data.items);
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    if (!areProductsLoading) {
+      setProductsMeta(productsResponse?.meta || undefined);
+      setProducts(productsResponse?.items || []);
     }
-    setLoading(false);
-  };
+  }, [areProductsLoading, productsResponse]);
 
   useEffect(() => {
-    getProducts(currentPage);
-  }, [currentPage]);
-
-  useEffect(() => {
-    getProducts(1);
     setCurrentPage(1);
   }, [filterOptions]);
 
   return (
     <div className="products-page">
-      <div className="products">
-        {loading ? (
+      <div className={`products ${products.length === 2 || products.length === 6 ? 'change-display' : ''}`}>
+        {areProductsLoading ? (
           <Loader />
         ) : products.length ? (
-          products.map((product: TProduct) => {
-            return <Product key={product.id} {...product} />;
-          })
+          products.map((product: TProduct, index: number) => <Product key={product.id} {...product} />)
         ) : (
           <NoProducts />
         )}
       </div>
-      {!loading && <Pagination {...productsMeta} setCurrentPage={setCurrentPage} currentPage={currentPage || 1} />}
+
+      <Pagination
+        {...productsMeta}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        areProductsLoading={areProductsLoading}
+      />
     </div>
   );
 };

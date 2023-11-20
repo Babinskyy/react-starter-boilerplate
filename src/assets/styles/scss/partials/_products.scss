@@ -1,11 +1,25 @@
 .products-page {
-  @include flexbox(column);
-  width: 1224px;
-  margin: 0 auto;
-  // border: 5px solid red;
+  @include flexbox(column, center, center);
+  width: 100%;
+  margin: 0;
   flex-grow: 1;
+  margin-top: 56px;
+  margin-bottom: 56px;
+
   .products {
     @include flexbox(row, space-between);
     flex-wrap: wrap;
+    max-width: 1224px;
+
+    &.change-display {
+      @include flexbox(row, space-evenly);
+    }
+
+    // Responsive styles
+    @media (max-width: 768px) {
+      & {
+        @include flexbox(column);
+      }
+    }
   }
 }

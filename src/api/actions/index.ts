@@ -1,9 +1,11 @@
 import { authMutations } from './auth/auth.mutations';
 import { authQueries } from './auth/auth.queries';
+import { productQueries } from './products/products.queries';
 // API_COLLECTION_IMPORTS
 
 export const queries = {
   ...authQueries,
+  ...productQueries,
   // API_COLLECTION_QUERIES
 } as const;
 

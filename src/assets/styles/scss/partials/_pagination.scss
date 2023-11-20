@@ -1,5 +1,9 @@
 .pagination-container {
   margin: auto auto 0 auto;
+
+  &.loading {
+    pointer-events: none;
+  }
   .pagination {
     padding: 5px;
     margin: 5px;
@@ -28,6 +32,18 @@
     }
     &.disabled {
       pointer-events: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pagination {
+      padding: 2px;
+      margin: 2px;
+    }
+    button {
+      // padding: 10;
+      margin-left: 8px;
+      margin-right: 8px;
     }
   }
 }

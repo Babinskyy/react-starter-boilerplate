@@ -22,9 +22,6 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    // margin: 0 auto;
-    // align-items: center;
-    // justify-content: center;
     .logo-section {
       width: 496px;
       margin: 0 auto;
@@ -61,7 +58,7 @@
           height: 48px;
           margin-top: 30px;
           font-size: 16px;
-          font-weight: 600;
+
           &:hover {
             background-color: #2140e8;
           }
@@ -75,6 +72,23 @@
             color: #4460f7;
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: '768px') {
+    .image-section {
+      display: none;
+    }
+    .right-section {
+      padding: 24px;
+
+      .logo-section {
+        width: 100%;
+        margin-top: 16px;
+      }
+      .form-section {
+        width: 100%;
       }
     }
   }

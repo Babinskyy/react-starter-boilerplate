@@ -65,7 +65,9 @@ export default function CustomizedCheckbox() {
   return (
     <div className="filters-container">
       <BpCheckbox onChange={() => handleCheckboxChange('active')} id="active" checked={filterOptions.active} />
-      <label htmlFor="active">Active</label>
+      <label htmlFor="active" className="first-label">
+        Active
+      </label>
       <BpCheckbox onChange={() => handleCheckboxChange('promo')} id="promo" checked={filterOptions.promo} />
       <label htmlFor="promo">Promo</label>
     </div>

@@ -1,3 +1,4 @@
+import '../../../assets/styles/main.scss';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
@@ -7,7 +8,7 @@ import { useFilter } from 'context/filterContext/FilterContext';
 import { useEffect, useState } from 'react';
 
 export default function SearchInput() {
-  const { filterOptions, updateFilterOptions } = useFilter();
+  const { updateFilterOptions } = useFilter();
   const [inputValue, setInputValue] = useState('');
 
   const handleSearch = (e: React.FormEvent) => {
@@ -27,23 +28,9 @@ export default function SearchInput() {
   }, [inputValue]);
 
   return (
-    <Paper
-      component="form"
-      onSubmit={handleSearch} // Handle form submission
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        width: 392,
-        boxShadow: 'none',
-        border: '1px solid #E0E2EA',
-      }}
-    >
+    <Paper component="form" onSubmit={handleSearch} className="search-input-container" sx={{ boxShadow: 'none' }}>
       <InputBase
         sx={{
-          ml: 1,
-          flex: 1,
-          fontSize: '14px',
-          fontStyle: 'normal',
           input: {
             color: '#1A1B1D',
             '&::placeholder': {
@@ -51,6 +38,7 @@ export default function SearchInput() {
             },
           },
         }}
+        className="input-base"
         placeholder="Search"
         inputProps={{ 'aria-label': 'search' }}
         value={inputValue}

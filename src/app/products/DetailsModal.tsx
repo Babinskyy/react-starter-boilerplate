@@ -35,18 +35,21 @@ const DetailsModal = (props: any) => {
       >
         {props.active ? 'Show details' : 'Unavailable'}
       </Button>
-      <Modal open={isModalOpen} onCancel={handleCancel} footer={null}>
+      <Modal open={isModalOpen} onCancel={handleCancel} footer={null} destroyOnClose={true}>
         <Card
           hoverable
           cover={
             <>
-              <div style={{ height: '450px', display: loading ? 'block' : 'none' }}>
+              <div style={{ height: '400px', display: loading ? 'block' : 'none' }}>
                 <Loader />
               </div>
               <img
-                alt="example"
+                alt="modal-image"
                 src={props.image}
-                onLoad={() => setLoading(false)}
+                onLoad={() => {
+                  console.log('loaded');
+                  setLoading(false);
+                }}
                 style={{ display: loading ? 'none' : 'block' }}
               />
             </>

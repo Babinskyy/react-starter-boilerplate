@@ -6,6 +6,7 @@ import Logo from '../common/Logo';
 import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useAuth } from 'hooks';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,6 +14,9 @@ const Login = () => {
     localStorage.setItem('user', values.username);
     navigate('/products');
   };
+
+  const auth = useAuth();
+  console.log(auth);
 
   return (
     <div className="login-container">

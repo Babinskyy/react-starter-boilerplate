@@ -14,26 +14,46 @@ const Header = () => {
   useEffect(() => {
     setIsLogged(localStorage.getItem('user') ? true : false);
   }, []);
+
   return (
     <header className="header">
       <div className="content-container">
-        <Logo />
+        <div className="logo-menu-container">
+          <Logo />
+          <div className="menu-mobile">
+            {isLogged ? (
+              <Menu setIsLogged={setIsLogged} />
+            ) : (
+              <Button
+                variant="outlined"
+                size="large"
+                className="login-button"
+                sx={{ color: '#4460F7', borderColor: '#4460F7' }}
+                onClick={() => navigate('/login')}
+              >
+                <span>l</span>og in
+              </Button>
+            )}
+          </div>
+        </div>
+
         <Searchbar />
-        <div />
-        <div />
-        {isLogged ? (
-          <Menu setIsLogged={setIsLogged} />
-        ) : (
-          <Button
-            variant="outlined"
-            size="large"
-            className="login-button"
-            sx={{ color: '#4460F7', borderColor: '#4460F7' }}
-            onClick={() => navigate('/login')}
-          >
-            <span>l</span>og in
-          </Button>
-        )}
+        <div className="spacer" />
+        <div className="menu-desktop">
+          {isLogged ? (
+            <Menu setIsLogged={setIsLogged} />
+          ) : (
+            <Button
+              variant="outlined"
+              size="large"
+              className="login-button"
+              sx={{ color: '#4460F7', borderColor: '#4460F7' }}
+              onClick={() => navigate('/login')}
+            >
+              <span>l</span>og in
+            </Button>
+          )}
+        </div>
       </div>
     </header>
   );

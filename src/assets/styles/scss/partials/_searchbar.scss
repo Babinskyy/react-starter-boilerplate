@@ -1,9 +1,19 @@
 .searchbar {
-  display: flex;
+  @include flexbox(row, space-between, center);
   width: 595px;
-  justify-content: space-between;
-  align-items: center;
+
   .css-i4bv87-MuiSvgIcon-root {
     fill: #1a1b1d;
+  }
+  .css-cdzivs-MuiButtonBase-root-MuiCheckbox-root {
+    padding: 0;
+    margin-right: 8px;
+  }
+  @media (max-width: 992px) {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    @include flexbox(column);
   }
 }

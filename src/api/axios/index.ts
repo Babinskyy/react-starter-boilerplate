@@ -7,7 +7,6 @@ import {
 } from 'context/apiClient/apiClientContextController/interceptors/responseInterceptors';
 
 export const BASE_URL = import.meta.env.VITE_API_URL;
-
 const axiosClient = axios.create({
   headers: {
     'Content-Type': 'application/json',

@@ -1,10 +1,11 @@
 .product {
-  max-width: 288px;
+  width: 288px;
   height: 400px;
   display: flex;
   flex-direction: column;
   position: relative;
   margin-bottom: 32px;
+  // margin: 0 9px 32px 9px;
   .promo-label {
     display: flex;
     justify-content: center;
@@ -16,6 +17,11 @@
     color: white;
     width: 75px;
     height: 24px;
+  }
+  .product-title {
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: 20px;
   }
   .product-description {
     font-size: 14px;

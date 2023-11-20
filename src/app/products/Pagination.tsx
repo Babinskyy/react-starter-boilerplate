@@ -7,10 +7,11 @@ type PaginationProps = {
   itemsPerPage?: number;
   totalItems?: number;
   totalPages?: number;
+  areProductsLoading: boolean;
 };
 
 const Pagination = (props: PaginationProps) => {
-  const totalPages = Math.ceil(props.totalItems ? props.totalItems / 8 : 0);
+  const totalPages = Math.ceil(props.totalItems ? props.totalItems / (window.innerWidth < 768 ? 4 : 8) : 0);
 
   const generatePageNumbers = () => {
     if (props.currentPage) {
@@ -43,7 +44,7 @@ const Pagination = (props: PaginationProps) => {
   };
 
   return (
-    <div className="pagination-container">
+    <div className={`pagination-container ${props.areProductsLoading ? 'loading' : ''}`}>
       {generatePageNumbers()?.length ? (
         <button
           onClick={() => props.setCurrentPage(1)}
