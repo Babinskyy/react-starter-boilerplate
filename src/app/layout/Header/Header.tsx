@@ -1,11 +1,11 @@
 import '../../../assets/styles/main.scss';
 import Logo from '../../common/Logo';
 import Button from '@mui/material/Button';
-import Searchbar from './Searchbar';
+import Searchbar from './components/Searchbar';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import Menu from './Menu';
+import Menu from './components/Menu';
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);

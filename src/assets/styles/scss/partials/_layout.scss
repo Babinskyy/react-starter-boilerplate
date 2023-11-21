@@ -2,12 +2,18 @@
   @include flexbox(column);
   min-height: 100vh;
   background-color: #f8f8fa;
-  .app__main {
+  .app-main {
     @include flexbox(column);
     padding: 0 56px 0 56px;
     flex-grow: 1;
   }
-  .app__main--no-header {
+  .app-main-no-header {
     overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .app-main {
+      @include flexbox(column, initial, center);
+    }
   }
 }

@@ -5,7 +5,6 @@
   flex-direction: column;
   position: relative;
   margin-bottom: 32px;
-  // margin: 0 9px 32px 9px;
   .promo-label {
     display: flex;
     justify-content: center;
@@ -35,5 +34,12 @@
     display: flex;
     padding: 16px 0 16px 0;
     width: 256px;
+  }
+
+  @media (max-width: 768px) {
+    width: 327px;
+    .product-actions {
+      width: 295px;
+    }
   }
 }

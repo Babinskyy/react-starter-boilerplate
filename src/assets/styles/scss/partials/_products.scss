@@ -9,17 +9,21 @@
   .products {
     @include flexbox(row, space-between);
     flex-wrap: wrap;
+    width: 100%;
     max-width: 1224px;
 
-    &.change-display {
+    &.display-change {
       @include flexbox(row, space-evenly);
     }
 
-    // Responsive styles
     @media (max-width: 768px) {
       & {
         @include flexbox(column);
       }
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 327px;
   }
 }

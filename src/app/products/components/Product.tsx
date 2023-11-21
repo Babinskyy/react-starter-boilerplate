@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Rating } from '@mui/material';
 import DetailsModal from './DetailsModal';
-import '../../assets/styles/main.scss';
+import '../../../assets/styles/main.scss';
 import { useState } from 'react';
 import Loader from 'ui/loader/Loader';
 

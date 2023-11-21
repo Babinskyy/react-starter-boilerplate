@@ -1,12 +1,19 @@
-import '../../assets/styles/main.scss';
+import '../../../assets/styles/main.scss';
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { Card } from 'antd';
-import Loader from '../../ui/loader/Loader';
+import Loader from '../../../ui/loader/Loader';
 
 const { Meta } = Card;
 
-const DetailsModal = (props: any) => {
+type DetailsModalProps = {
+  image: string;
+  description: string;
+  name: string;
+  active: boolean;
+};
+
+const DetailsModal = (props: DetailsModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -47,7 +54,6 @@ const DetailsModal = (props: any) => {
                 alt="modal-image"
                 src={props.image}
                 onLoad={() => {
-                  console.log('loaded');
                   setLoading(false);
                 }}
                 style={{ display: loading ? 'none' : 'block' }}

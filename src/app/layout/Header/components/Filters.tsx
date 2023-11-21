@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
-import { useFilter } from '../../../context/filterContext/FilterContext';
+import { useFilter } from '../../../../context/filterContext/FilterContext';
 
 type FilterOptions = {
   active: boolean;

@@ -16,19 +16,6 @@
   }
   @media (max-width: 768px) {
     width: 100%;
-    margin: 24px 0px 24px 0px;
+    margin: 0 0 24px 0;
   }
 }
-
-// sx={{
-//     ml: 1,
-//     flex: 1,
-//     fontSize: '14px',
-//     fontStyle: 'normal',
-//     input: {
-//       color: '#1A1B1D',
-//       '&::placeholder': {
-//         opacity: 1,
-//       },
-//     },
-//   }}

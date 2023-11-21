@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
-import Avatar from '../../../assets/images/avatar.png';
+import Avatar from '../../../../assets/images/avatar.png';
 import { useState } from 'react';
 
 type AccountMenuProps = {

@@ -9,12 +9,12 @@ import { FilterProvider } from 'context/filterContext/FilterContext';
 
 export const AppProviders = ({ children }: AppProvidersProps) => (
   <FilterProvider>
-    <LocaleContextController>
-      <ApiClientContextController>
-        <AuthContextController>
-          <Router>{children}</Router>
-        </AuthContextController>
-      </ApiClientContextController>
-    </LocaleContextController>
+    {/* <LocaleContextController> */}
+    <ApiClientContextController>
+      <AuthContextController>
+        <Router>{children}</Router>
+      </AuthContextController>
+    </ApiClientContextController>
+    {/* </LocaleContextController> */}
   </FilterProvider>
 );

@@ -10,13 +10,12 @@ import { useAuth } from 'hooks';
 
 const Login = () => {
   const navigate = useNavigate();
-  const onFinish = (values: any) => {
-    localStorage.setItem('user', values.username);
-    navigate('/products');
-  };
+  const { user, login, logout, isAuthenticated, isAuthenticating } = useAuth();
 
-  const auth = useAuth();
-  console.log(auth);
+  const handleLogin = async (values: { password: string; username: string }) => {
+    const response = await login({ password: values.password, username: values.username });
+    console.log('Login response:', response);
+  };
 
   return (
     <div className="login-container">
@@ -24,13 +23,12 @@ const Login = () => {
         <LazyLoadImage placeholderSrc={loginImageLowQuality} src={loginImage} alt="login-image" effect="blur" />
       </div>
       <div className="right-section">
-        {' '}
         <div className="logo-section">
           <Logo />
         </div>
         <div className="form-section">
           <h2>Login</h2>
-          <Form name="loginForm" onFinish={onFinish} initialValues={{ remember: true }} layout="vertical">
+          <Form name="loginForm" onFinish={handleLogin} initialValues={{ remember: true }} layout="vertical">
             <label>Username</label>
             <Form.Item name="username" rules={[{ required: true, message: 'Please enter your username!' }]}>
               <Input placeholder="Enter username" style={{ height: '48px' }} />

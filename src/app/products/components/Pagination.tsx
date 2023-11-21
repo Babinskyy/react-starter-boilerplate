@@ -1,4 +1,4 @@
-import '../../assets/styles/main.scss';
+import '../../../assets/styles/main.scss';
 
 type PaginationProps = {
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;

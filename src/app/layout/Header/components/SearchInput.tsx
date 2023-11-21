@@ -1,4 +1,4 @@
-import '../../../assets/styles/main.scss';
+import '../../../../assets/styles/main.scss';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
