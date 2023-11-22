@@ -2,8 +2,7 @@ import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
-import Avatar from '../../../../assets/images/avatar.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type AccountMenuProps = {
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +10,8 @@ type AccountMenuProps = {
 
 const AccountMenu = (props: AccountMenuProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [avatar, setAvatar] = useState<string | undefined>(undefined);
+
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -23,6 +24,14 @@ const AccountMenu = (props: AccountMenuProps) => {
     localStorage.removeItem('user');
     props.setIsLogged(false);
   };
+
+  useEffect(() => {
+    console.log(localStorage.getItem('user'));
+    const avatarString = localStorage.getItem('user');
+    if (avatarString) {
+      setAvatar(JSON.parse(avatarString).user.avatar);
+    }
+  }, []);
   return (
     <>
       <Box style={{ width: '88px', display: 'flex', justifyContent: 'flex-end' }}>
@@ -33,7 +42,7 @@ const AccountMenu = (props: AccountMenuProps) => {
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
         >
-          <img src={Avatar} alt="avatar" className="avatar" />
+          <img src={avatar} alt="avatar" className="avatar" />
         </IconButton>
       </Box>
       <Menu

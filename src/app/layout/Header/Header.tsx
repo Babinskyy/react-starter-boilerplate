@@ -7,6 +7,16 @@ import { useEffect, useState } from 'react';
 
 import Menu from './components/Menu';
 
+export type User = {
+  access_token: string;
+  expiresIn: number;
+  user: {
+    id: string;
+    username: string;
+    avatar: string;
+  };
+};
+
 const Header = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const navigate = useNavigate();

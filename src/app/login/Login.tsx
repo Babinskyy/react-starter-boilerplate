@@ -7,14 +7,23 @@ import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useAuth } from 'hooks';
+import { useState } from 'react';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { user, login, logout, isAuthenticated, isAuthenticating } = useAuth();
+  const { login } = useAuth();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleLogin = async (values: { password: string; username: string }) => {
-    const response = await login({ password: values.password, username: values.username });
-    console.log('Login response:', response);
+    try {
+      const response = await login({ password: values.password, username: values.username });
+      console.log('Login response:', response);
+      localStorage.setItem('user', JSON.stringify(response));
+      navigate('/products');
+    } catch (error) {
+      console.error(error);
+      setErrorMessage('Invalid credentials, please try again.');
+    }
   };
 
   return (
@@ -28,6 +37,9 @@ const Login = () => {
         </div>
         <div className="form-section">
           <h2>Login</h2>
+
+          <Form.Item className="error-message">{errorMessage && <div>{errorMessage}</div>}</Form.Item>
+
           <Form name="loginForm" onFinish={handleLogin} initialValues={{ remember: true }} layout="vertical">
             <label>Username</label>
             <Form.Item name="username" rules={[{ required: true, message: 'Please enter your username!' }]}>

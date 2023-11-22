@@ -29,7 +29,10 @@
     .form-section {
       margin: auto;
       width: 496px;
-
+      .error-message {
+        margin: 0;
+        color: red;
+      }
       label {
         display: block;
         text-align: left;
@@ -43,6 +46,7 @@
         font-style: normal;
         font-weight: 600;
         line-height: 40px;
+        margin: 0;
       }
       form {
         width: 100%;
