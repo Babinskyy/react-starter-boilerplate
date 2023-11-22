@@ -14,7 +14,7 @@ import Login from 'app/login/Login';
 
 export const AppRoutes = () => (
   <Routes>
-    <Route path={AppRoute.home} element={<Layout />}>
+    <Route path={AppRoute.products} element={<Layout />}>
       <Route path={AppRoute.home} element={<Home />} />
       <Route path={AppRoute.about} element={<About />} />
       <Route path={AppRoute.help} element={<Help />} />

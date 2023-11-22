@@ -17,9 +17,8 @@ const Login = () => {
   const handleLogin = async (values: { password: string; username: string }) => {
     try {
       const response = await login({ password: values.password, username: values.username });
-      console.log('Login response:', response);
       localStorage.setItem('user', JSON.stringify(response));
-      navigate('/products');
+      navigate('/');
     } catch (error) {
       console.error(error);
       setErrorMessage('Invalid credentials, please try again.');

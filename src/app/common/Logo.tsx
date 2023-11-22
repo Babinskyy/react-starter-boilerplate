@@ -9,7 +9,7 @@ const Logo = () => {
       viewBox="0 0 104 23"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      onClick={() => navigate('/products')}
+      onClick={() => navigate('/')}
       className="logo-svg"
     >
       <path

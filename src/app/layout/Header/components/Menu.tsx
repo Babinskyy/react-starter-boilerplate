@@ -26,7 +26,6 @@ const AccountMenu = (props: AccountMenuProps) => {
   };
 
   useEffect(() => {
-    console.log(localStorage.getItem('user'));
     const avatarString = localStorage.getItem('user');
     if (avatarString) {
       setAvatar(JSON.parse(avatarString).user.avatar);
